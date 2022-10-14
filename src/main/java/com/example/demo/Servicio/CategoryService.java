@@ -23,11 +23,11 @@ public class CategoryService {
     // metodo para poder guardar
     public Category save (Category category){
         // si el id no existe se ejecuta 
-        if (category.getIdCategory() == null){
+        if (category.getId() == null){
             return categoryRepository.save(category);
         } else {
             // si el id esta no lo debe crear
-            Optional <Category> category1 = categoryRepository.getCategory(category.getIdCategory());
+            Optional <Category> category1 = categoryRepository.getCategory(category.getId());
             if(category1.isEmpty()){
                 return categoryRepository.save(category);
             }else{
@@ -36,33 +36,4 @@ public class CategoryService {
         }
     }
     
-    // metodo para actualizar
-    public Category update(Category p){
-        if(p.getIdCategory()!=null){
-            Optional<Category> q = categoryRepository.getCategory(p.getIdCategory());
-            if(q.isPresent()){
-                if(p.getName()!=null){
-                    q.get().setName(p.getName());
-                }
-                categoryRepository.save(q.get());
-                return q.get();
-            }else{
-                return p;
-            }
-        }else{
-            return p;
-        }
-    }
-    
-    // metodo para borrar
-    public boolean delete(int id){
-        boolean flag=false;
-        Optional<Category>p= categoryRepository.getCategory(id);
-        if(p.isPresent()){
-            categoryRepository.delete(p.get());
-            flag=true;
-        }
-        return flag;
-
-    }
 }

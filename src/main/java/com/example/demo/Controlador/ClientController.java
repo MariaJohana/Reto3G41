@@ -26,7 +26,7 @@ public class ClientController {
         return clientService.getAll();
     }
     
-    // para leer el id
+        // para leer el id
     @GetMapping("/{id}")
     //para guardar variable
     public Optional <Client> getCategory (@PathVariable("id")int id){

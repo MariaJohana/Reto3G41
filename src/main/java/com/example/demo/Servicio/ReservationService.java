@@ -37,33 +37,5 @@ public class ReservationService {
         }
     }
     
-     // metodo para actualizar
-    public Reservation update(Reservation p){
-        if(p.getIdReservation()!=null){
-            Optional<Reservation> q = reservationRepository.getReservation(p.getIdReservation());
-            if(q.isPresent()){
-                if(p.getScore()!=null){
-                    q.get().setScore(p.getScore());
-                }
-                reservationRepository.save(q.get());
-                return q.get();
-            }else{
-                return p;
-            }
-        }else{
-            return p;
-        }
-    }
     
-    // metodo para borrar
-    public boolean delete(int id){
-        boolean flag=false;
-        Optional<Reservation>p= reservationRepository.getReservation(id);
-        if(p.isPresent()){
-           reservationRepository.delete(p.get());
-            flag=true;
-        }
-        return flag;
-
-    }
 }

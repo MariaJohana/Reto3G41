@@ -37,33 +37,5 @@ public class ClientService {
             }
         }
     }
-    // metodo para actualizar
-    public Client update(Client p){
-        if(p.getIdClient()!=null){
-            Optional<Client> q = clientRepository.getClient(p.getIdClient());
-            if(q.isPresent()){
-                if(p.getName()!=null){
-                    q.get().setName(p.getName());
-                }
-                clientRepository.save(q.get());
-                return q.get();
-            }else{
-                return p;
-            }
-        }else{
-            return p;
-        }
-    }
-    
-     // metodo para borrar
-     public boolean delete(int id){
-        boolean flag=false;
-        Optional<Client>p= clientRepository.getClient(id);
-        if(p.isPresent()){
-            clientRepository.delete(p.get());
-            flag=true;
-        }
-        return flag;
-
-    }
+   
 }

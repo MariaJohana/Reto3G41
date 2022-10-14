@@ -33,7 +33,7 @@ public class Cinema {
     @JsonIgnoreProperties("cinemas")
     private Category category;
     
-     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cinema")
     @JsonIgnoreProperties({"cinema","client"})
     private List<Message> messages;
      

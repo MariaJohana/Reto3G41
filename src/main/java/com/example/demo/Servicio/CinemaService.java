@@ -37,35 +37,7 @@ public class CinemaService {
         }
     }
     
-     // metodo para actualizar
-    public Cinema update(Cinema p){
-        if(p.getId()!=null){
-            Optional<Cinema> q = cinemaRepository.getCinema(p.getId());
-            if(q.isPresent()){
-                if(p.getName()!=null){
-                    q.get().setName(p.getName());
-                }
-                cinemaRepository.save(q.get());
-                return q.get();
-            }else{
-                return p;
-            }
-        }else{
-            return p;
-        }
-    }
     
-    // metodo para borrar
-    public boolean delete(int id){
-        boolean flag=false;
-        Optional<Cinema>p= cinemaRepository.getCinema(id);
-        if(p.isPresent()){
-           cinemaRepository.delete(p.get());
-            flag=true;
-        }
-        return flag;
-
-    }
 }
 
 

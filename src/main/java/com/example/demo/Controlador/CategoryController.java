@@ -17,28 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/Category")
 public class CategoryController {
-    @Autowired
-    
+     @Autowired
     private CategoryService categoryService;
-    // el get maping poder leere dentro de la tabla
+    
     @GetMapping("/all")
-    // para leer toda la tabla
     public List<Category> getAll(){
         return categoryService.getAll();
     }
     
-    // para leer el id
     @GetMapping("/{id}")
-    //para guardar variable
-    public Optional <Category> getCategory (@PathVariable("id")int id){
+    public Optional<Category> getCategory(@PathVariable("id") int id){
         return categoryService.getCategory(id);
-    }
+    } 
     
-    // para poder crear
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category save(@RequestBody  Category category){
+    public Category save (@RequestBody Category category){
         return categoryService.save(category);
-    
     }
+    
 }

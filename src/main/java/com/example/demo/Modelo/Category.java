@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCategory;
+    private Integer id;
     private String name;
     private String description;
     
@@ -23,12 +23,12 @@ public class Category {
     @JsonIgnoreProperties("category")
     private List<Cinema> cinemas;
 
-    public Integer getIdCategory() {
-        return idCategory;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCategory(Integer idCategory) {
-        this.idCategory = idCategory;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -54,6 +54,10 @@ public class Category {
     public void setCinemas(List<Cinema> cinemas) {
         this.cinemas = cinemas;
     }
+
+    
+    
+
     
     
     
